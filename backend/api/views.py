@@ -29,7 +29,7 @@ class FlyerViewSet(viewsets.ViewSet):
         #ToDo
         return Response({'status': 'ok'})
     
-    @list_route()
+    @list_route(methods=['post'])
     def sample(self, request):
         #Dummy code for now
         req = urllib2.Request("https://forallschools.s3.amazonaws.com/media/files/4b_Instructional_Protocol-Blank.pdf")
