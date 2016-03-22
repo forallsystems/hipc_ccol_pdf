@@ -45,7 +45,7 @@ class FlyerViewSet(viewsets.ViewSet):
         
     @staticmethod
     def _generatePDF(title="Latest CCOL Events", school_id="", grade="", subject=""):        
-        events = Event.objects.all().order_by('-start_date')[:6]
+        events = Event.objects.all().order_by('-start_date')[:5]
 
         context_dict = {'events':events,
                         'title':title}
