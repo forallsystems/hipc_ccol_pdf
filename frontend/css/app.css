@@ -1,0 +1,25 @@
+/* react-select overrides */
+.Select-placeholder {
+    color: #555;
+}
+
+/* react-select does not provide styles for multi-selected items */
+.Select-item {
+    display: inline-block;
+    background-color: #e3e3e3;
+    border: 1px solid #ccc;
+    padding: 2px 4px;
+    border-radius: 4px;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.Select-item-icon {
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.Select-item-label {
+    margin-left: 4px;
+    margin-right: 4px;
+}
