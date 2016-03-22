@@ -21,11 +21,15 @@
 
 	<h1>{{title}}</h1>
 	
-	<p>Events go here...</p>
+	{% for e in events %}
+		<b>{{e.name}}</b><br/>
+		{{e.description|safe}}
+		<hr/>
+	{% endfor %}
    
 </div>
 <div id="footerContent">
-Foother Here
+Footer Here
 </div>
 </body>
 </html>
