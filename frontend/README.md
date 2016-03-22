@@ -1,18 +1,16 @@
 
-To install React and React DOM:
+Install React and React DOM:
 
-$ npm install --save react react-dom babelify babel-preset-react
-$ browserify -t [ babelify --presets [ react ] ] main.js -o bundle.js
+```$ npm install --save react react-dom babelify babel-preset-react```
 
+Install react-select:
 
-To install react-select:
-
-$ npm install react-select --save
+```$ npm install react-select --save```
 
 Install browserify:
 
-$ sudo npm install -g browserify
+```$ sudo npm install -g browserify```
 
 Build library bundle:
 
-$ browserify -t [ babelify --presets [ react ] ] -r react -r react-dom -r react-select -o libraries.js
+```$ browserify -t [ babelify --presets [ react ] ] -r react -r react-dom -r react-select -o libraries.js```
