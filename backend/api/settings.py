@@ -36,6 +36,13 @@ MIDDLEWARE_CLASSES = [
 
 ROOT_URLCONF = 'api.urls'
 
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'APP_DIRS': True,
+    },
+]
+
 WSGI_APPLICATION = 'api.wsgi.application'
 
 DATABASES = {
