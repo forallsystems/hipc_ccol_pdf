@@ -3,10 +3,19 @@ from rest_framework.decorators import detail_route, list_route
 from rest_framework.response import Response
 from wsgiref.util import FileWrapper
 from django.http import HttpResponse, HttpResponseRedirect
+from django.template.loader import get_template
+from django.template import Context
 from api.models import *
 from api.serializers import *
 import urllib2
 import xmltodict
+import xhtml2pdf.pisa as pisa
+try:
+    import StringIO
+    StringIO = StringIO.StringIO
+except Exception:
+    from io import StringIO
+import cgi
 
 class SchoolViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = School.objects.all()
@@ -30,18 +39,25 @@ class FlyerViewSet(viewsets.ViewSet):
         #ToDo
         return Response({'status': 'ok'})
     
-    @list_route(methods=['post'])
+    @list_route(methods=['post','get'])
     def sample(self, request):
-        #Dummy code for now
-        req = urllib2.Request("https://forallschools.s3.amazonaws.com/media/files/4b_Instructional_Protocol-Blank.pdf")
-        response = urllib2.urlopen(req)
-        response = HttpResponse(response.read(),  content_type='application/pdf')
-        response['Content-Disposition'] = 'inline;filename=some_file.pdf'
-        return response
+        return FlyerViewSet._generatePDF()
         
     @staticmethod
-    def _generatePDF(title, school_id, grade, subject):
-        pass
+    def _generatePDF(title="Latest CCOL Events", school_id="", grade="", subject=""):        
+        events = Event.objects.all().order_by('-start_date')[:6]
+
+        context_dict = {'events':events,
+                        'title':title}
+        
+        template = get_template("flyer_pdf.html")
+        context = Context(context_dict)
+        html  = template.render(context)
+        result = StringIO()
+        pdf = pisa.pisaDocument(StringIO( "{0}".format(html) ), result)
+        if not pdf.err:
+            return HttpResponse(result.getvalue(), content_type='application/pdf')
+        return HttpResponse('We had some errors<pre>%s</pre>' % cgi.escape(html))
     
 #A cron job will call this once a day/week, to update the events from the CCOL rss feed    
 def update_events(request):
