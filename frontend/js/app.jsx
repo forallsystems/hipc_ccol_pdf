@@ -31,7 +31,7 @@ var SUBJECT_LEVEL_OPTIONS = [
 var BootstrapErrorAlert = React.createClass({    
     render: function() {
         return (
-            <div className='alert alert-danger'>
+            <div className='alert alert-warning'>
                 <button
                     type="button"
                     className="close"
@@ -39,6 +39,7 @@ var BootstrapErrorAlert = React.createClass({
                 >
                     &times;
                 </button>
+                <span className="glyphicon glyphicon-alert"></span>
                 {this.props.message}
             </div>
         );
