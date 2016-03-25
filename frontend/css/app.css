@@ -1,12 +1,67 @@
-/* react-select overrides */
+
+body {
+    background-color: rgb(182, 0, 0);
+    font-family: 'Open Sans';
+}
+
+h3, h4 {
+    color: white;
+    font-weight: 900;
+    margin-bottom: 20px;
+}
+
+a,
+a:active,
+a:hover,
+a:focus,
+a:visited {
+    color: white;
+    text-decoration: underline;
+}
+
+.form-control:-moz-placeholder { /* Firefox 18- */
+   color: rgba(182, 0, 0, .5)
+}
+.form-control::-moz-placeholder {  /* Firefox 19+ */
+   color: rgba(182, 0, 0, .5)
+}
+.form-control:-ms-input-placeholder {  
+   color: rgba(182, 0, 0, .5)
+}
+.form-control::-webkit-input-placeholder {
+  color: rgba(182, 0, 0, .5)
+}
+button.btn-subscribe {
+    background-color: white;
+    color: rgb(182, 0, 0);
+    font-weight: bold;
+    padding-left: 2em;
+    padding-right: 2em;    
+}
+
+/* react-select overrides 
+*/
+
 .Select-placeholder {
+    color: rgba(182, 0, 0, .5)
+}
+.has-value > .Select-control > .Select-placeholder {
     color: #555;
 }
+
+.Select-arrow {
+  border-color: #b60000 transparent transparent;
+}
+.is-open .Select-arrow,
+.Select-arrow-zone:hover > .Select-arrow {
+  border-top-color: #b60000;
+}
+
 
 /* react-select does not provide styles for multi-selected items */
 .Select-item {
     display: inline-block;
-    background-color: #e3e3e3;
+    background-color: #ededed;
     border: 1px solid #ccc;
     padding: 2px 4px;
     border-radius: 4px;

@@ -202,7 +202,7 @@ var HIPCForm = React.createClass({
                         <Select 
                             name="school" 
                             value={this.state.school}
-                            placeholder="Select Your School"
+                            placeholder="What school do you teach in?"
                             asyncOptions={this.loadSchoolOptions}
                             onChange={this.onSchoolChange}
                         />
@@ -211,7 +211,7 @@ var HIPCForm = React.createClass({
                         <Select 
                             name="grade" 
                             value={this.state.grades}
-                            placeholder="Grade Level"
+                            placeholder="What grade do you teach?"
                             multi={true}
                             options={GRADE_LEVEL_OPTIONS} 
                             onChange={this.onGradeChange}
@@ -221,7 +221,7 @@ var HIPCForm = React.createClass({
                         <Select 
                             name="subject" 
                             value={this.state.subjects}
-                            placeholder="Subject Area"
+                            placeholder="Which topics are your students interested in?"
                             multi={true}
                             options={SUBJECT_LEVEL_OPTIONS} 
                             onChange={this.onSubjectChange}
@@ -233,7 +233,7 @@ var HIPCForm = React.createClass({
                             className="form-control" 
                             name="title" 
                             value={this.state.title}
-                            placeholder="Flyer Title" 
+                            placeholder="How would you like to title your flyer?" 
                             onChange={this.onTitleChange}
                         />
                     </div>
@@ -243,15 +243,15 @@ var HIPCForm = React.createClass({
                             className="form-control" 
                             name="email" 
                             value={this.state.email}
-                            placeholder="Your Email Address" 
+                            placeholder="What's your email address?" 
                             onChange={this.onEmailChange}
                         />
                     </div>
                     <div className="form-group text-center">
-                        <button type="submit" className="btn btn-default">Subscribe</button>
+                        <button type="submit" className="btn btn-subscribe">SUBSCRIBE</button>
                     </div>
                     <div className="form-group text-center">
-                        <a href="javascript:;" onClick={this.handleShowSample}>View Sample</a>
+                        <a href="javascript:;" onClick={this.handleShowSample}>View a Sample Flyer</a>
                     </div>
                 </form>
             </div>
