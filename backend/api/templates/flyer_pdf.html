@@ -14,22 +14,55 @@
     		height: 1cm;
 		}
 	}
+	
+	
+	
+	
+	.eventName {
+		font-size:1.5em;
+		font-weight:bold;
+		color:#b60000;
+		
+	}
+	
+	hr {
+		padding-top:20px;padding-bottom:10px;margin:30px;
+		background-color:#b60000;
+	}
 </style>
 </head>
 <body>
 <div>
-
-	<h1>{{title}}</h1>
+	<h1 style="color:#b60000;font-size:2.5em;font-weight:bold;text-align:center;border-bottom:1px solid #eeeeee;">{{title|upper}}</h1>
 	
 	{% for e in events %}
-		<b>{{e.name}}</b><br/>
-		{{e.description|safe}}
-		<hr/>
+			<table style="font-size:1.3em;">
+			<tr>
+			<td width="200" valign="top">
+				<img src="{{e.image}}" width="200px"/>
+			</td><td>
+				<span class='eventName'>{{e.name}}</span><br/>
+				{{e.description|safe|truncatewords_html:55}}<br/><br/>
+				<table ><tr>
+				<td style="border-left:5px solid #cccccc;padding-left:5px;">
+					<b>{{e.start_date}}</b><br/>
+					{{e.start_time}} - {{e.end_time}}<br/>
+					Cost: {{e.cost}}
+				</td>
+				<td>
+					{{e.organizer}}<br/>
+					{{e.venue_street_address}}<br/>
+					{{e.venue_city}}, {{e.venue_state}} {{e.venue_zipcode}}
+				
+				</td>
+				</tr></table>
+			</td>
+			</tr>
+			</table>
+			<hr />
 	{% endfor %}
    
 </div>
-<div id="footerContent">
-Footer Here
-</div>
+
 </body>
 </html>
