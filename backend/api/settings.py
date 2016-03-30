@@ -21,10 +21,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'rest_framework',
+    'django_zappa',
     'api',
 ]
 
 MIDDLEWARE_CLASSES = [
+    'django_zappa.middleware.ZappaMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware', 
@@ -50,8 +52,8 @@ WSGI_APPLICATION = 'api.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', 
-        'NAME':    'hipc_ccol_pdf',
-        'USER': 'root',                    
+        'NAME':    '',
+        'USER': '',                    
         'PASSWORD': '',                
         'HOST': '',                     
         'PORT': '',
@@ -70,5 +72,13 @@ CORS_ORIGIN_ALLOW_ALL = True
 #    'google.com',
 #    'hostname.example.com'
 #)
+
+ZAPPA_SETTINGS = {
+    'production': {
+       's3_bucket': '',
+       'settings_file': '',
+    },
+   
+}
 
 
