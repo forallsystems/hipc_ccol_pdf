@@ -18,6 +18,7 @@ class Event(models.Model):
     name = models.CharField(max_length=256)
     description = models.TextField(blank=True, null=True)
     organizer = models.CharField(max_length=256, blank=True, null=True)
+    image = models.TextField(blank=True, null=True)
     website = models.TextField(blank=True, null=True)
     start_date = models.DateField(blank=True, null=True)
     end_date = models.DateField(blank=True, null=True)
