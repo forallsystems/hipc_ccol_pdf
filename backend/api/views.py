@@ -7,6 +7,7 @@ from django.template.loader import get_template
 from django.template import Context
 from api.models import *
 from api.serializers import *
+import datetime
 import urllib2
 import xmltodict
 import xhtml2pdf.pisa as pisa
@@ -41,11 +42,11 @@ class FlyerViewSet(viewsets.ViewSet):
     
     @list_route(methods=['post','get'])
     def sample(self, request):
-        return FlyerViewSet._generatePDF()
+        return FlyerViewSet._generatePDF(title=request.POST.get("title",""))
         
     @staticmethod
     def _generatePDF(title="Latest CCOL Events", school_id="", grade="", subject=""):        
-        events = Event.objects.all().order_by('-start_date')[:5]
+        events = Event.objects.all().order_by('-start_date')[:4]
 
         context_dict = {'events':events,
                         'title':title}
@@ -73,9 +74,10 @@ def update_events(request):
         event = Event(name=item['event_name'],
                       description=item['event_description'],
                       organizer=item['event_organizer'],
+                      image = item['event_image'],
                       website=item['event_website'],
-                      start_date=item['event_start_date'],
-                      end_date=item['event_end_date'],
+                      start_date=datetime.datetime.fromtimestamp(int(item['event_start_date'])).strftime('%Y-%m-%d'),
+                      end_date=datetime.datetime.fromtimestamp(int(item['event_end_date'])).strftime('%Y-%m-%d'),
                       start_time=item['event_start_time'],
                       end_time=item['event_end_time'],
                       cost=item['event_cost'],
