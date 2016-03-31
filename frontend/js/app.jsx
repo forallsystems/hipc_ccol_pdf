@@ -3,7 +3,7 @@ var ReactDOM = require('react-dom');
 var Select = require('react-select');
 
 var GRADE_LEVEL_OPTIONS = [
-    { value: 0, label: "Kindergarten"},
+    { value: 'K', label: "Kindergarten"},
     { value: 1, label: "1st Grade"},
     { value: 2, label: "2nd Grade"},
     { value: 3, label: "3rd Grade"},
@@ -102,6 +102,10 @@ var HIPCForm = React.createClass({
         if(grades === "") {
             throw 'You must select a grade';
         }
+        if(grades == 'K') {
+            grades = '0';
+        }
+      
         //var grades = $.map(grades_text.split(','), function(value, i) {
         //    return parseInt(value);
         //});
