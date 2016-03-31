@@ -9,5 +9,4 @@ router.register(r'flyers', api_views.FlyerViewSet)
 
 urlpatterns = [
     url(r'^api/', include(router.urls)),
-    url(r'^update_events/$', 'api.views.update_events')
 ]
