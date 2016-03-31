@@ -21,12 +21,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'rest_framework',
-    'django_zappa',
+
     'api',
 ]
 
 MIDDLEWARE_CLASSES = [
-    'django_zappa.middleware.ZappaMiddleware',
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware', 
@@ -72,13 +72,10 @@ CORS_ORIGIN_ALLOW_ALL = True
 #    'google.com',
 #    'hostname.example.com'
 #)
+FRONT_END_URL = ''
 
-ZAPPA_SETTINGS = {
-    'production': {
-       's3_bucket': '',
-       'settings_file': '',
-    },
-   
-}
+MEDIA_ROOT = ''
 
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_FILE_PATH = '' 
 
