@@ -3,7 +3,7 @@ var ReactDOM = require('react-dom');
 var Select = require('react-select');
 
 var GRADE_LEVEL_OPTIONS = [
-    { value: 0, label: "Kindergartern"},
+    { value: 0, label: "Kindergarten"},
     { value: 1, label: "1st Grade"},
     { value: 2, label: "2nd Grade"},
     { value: 3, label: "3rd Grade"},
@@ -98,21 +98,21 @@ var HIPCForm = React.createClass({
             throw 'You must select a school';
         }
     
-        var grades_text = this.state.grades.trim();
-        if(!grades_text) {
-            throw 'You must select at least one grade';
+        var grades = this.state.grades;
+        if(grades === "") {
+            throw 'You must select a grade';
         }
-        var grades = $.map(grades_text.split(','), function(value, i) {
-            return parseInt(value);
-        });
+        //var grades = $.map(grades_text.split(','), function(value, i) {
+        //    return parseInt(value);
+        //});
 
-        var subjects_text = this.state.grades.trim();
-        if(!subjects_text) {
-            throw 'You must select at least one subject';
+        var subjects = this.state.subjects;
+        if(!subjects) {
+            throw 'You must select a subject';
         }
-        var subjects = $.map(subjects_text.split(','), function(value, i) {
-            return parseInt(value);
-        });
+        //var subjects = $.map(subjects_text.split(','), function(value, i) {
+        //    return parseInt(value);
+        //});
 
         var title = this.state.title.trim();
         if(!title) {
@@ -213,7 +213,7 @@ var HIPCForm = React.createClass({
                             name="grade" 
                             value={this.state.grades}
                             placeholder="What grade do you teach?"
-                            multi={true}
+                            multi={false}
                             options={GRADE_LEVEL_OPTIONS} 
                             onChange={this.onGradeChange}
                         />
@@ -223,7 +223,7 @@ var HIPCForm = React.createClass({
                             name="subject" 
                             value={this.state.subjects}
                             placeholder="Which topics are your students interested in?"
-                            multi={true}
+                            multi={false}
                             options={SUBJECT_LEVEL_OPTIONS} 
                             onChange={this.onSubjectChange}
                         />
